@@ -1,13 +1,10 @@
-name: .NET Core
-
+name: Deploy
 on:
   pull_request:
-  workflow_dispatch:
-        
-
+  
 jobs:
   build:
-
+    name: Run Web App
     runs-on: ubuntu-latest
 
     steps:
@@ -19,8 +16,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: wait for test to complete
-      uses: cmnawagamuwa/AutomationWithGitHubAction/ .github/workflows/main.yml@main
+    - name: Running test cases
+      uses: convictional/trigger-workflow-and-wait@v1.3.0
       with:
         owner: cmnawagamuwa
         repo: AutomationWithGitHubAction
