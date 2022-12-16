@@ -18,10 +18,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-    
-    - uses: convictional/trigger-workflow-and-wait@v1.3.0
+    #- name: Trigger Workflow and Wait
+  #uses: convictional/trigger-workflow-and-wait@v1.6.5
+
+    - uses: convictional/trigger-workflow-and-wait@v1.6.5
       with:
-        owner: keithweaver
+        owner: cmnawagamuwa
         repo: AutomationWithGitHubAction
         github_token: ${{ secrets.PAT_TOKEN }}
         workflow_file_name: main.yml
