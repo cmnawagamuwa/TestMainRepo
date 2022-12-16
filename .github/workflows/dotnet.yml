@@ -20,7 +20,7 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: wait for test to complete
-      uses: cmnawagamuwa/AutomationWithGitHubAction@main
+      uses: cmnawagamuwa/AutomationWithGitHubAction/ .github/workflows/main.yml@main
       with:
         owner: cmnawagamuwa
         repo: AutomationWithGitHubAction
