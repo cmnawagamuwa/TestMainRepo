@@ -21,7 +21,7 @@ jobs:
     
     - name: Test
       run: |
-        last_workflow=$(curl -X GET "https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches/runs" \
+        last_workflow=$(curl -X GET "https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/actions/workflows/main.yml/runs" \
           -H 'Accept: application/vnd.github.antiope-preview+json' \
           -H "Authorization: Bearer $INPUT_GITHUB_TOKEN" | jq '[.workflow_runs[]] | first')
         last_workflow_id=$(echo $last_workflow | jq '.id')
@@ -34,7 +34,7 @@ jobs:
         do
           echo "Sleeping for $wait_interval seconds"
           sleep $wait_interval
-          workflow=$(curl -X GET "https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches/runs" \
+          workflow=$(curl -X GET "https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/actions/workflows/main.yml/runs" \
             -H 'Accept: application/vnd.github.antiope-preview+json' \
             -H "Authorization: Bearer ${{secrets.PAT_TOKEN}}" | jq '.workflow_runs[] | select(.id == '$last_workflow_id')')
           conclusion=$(echo $workflow | jq '.conclusion')
