@@ -16,8 +16,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
-    - name: PR ID
-      env:
+    - env:
         PR_NUMBER: ${{ github.event.number }}
       
     - name: Triggering the Regression Tests
