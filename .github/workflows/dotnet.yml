@@ -35,3 +35,7 @@ jobs:
           
     - name: Test from here
       uses: cmnawagamuwa/AutomationWithGitHubAction/dispatches@master
+      with:
+        owner: cmnawagamuwa
+        repo: AutomationWithGitHubAction
+        github_token: ${{ secrets.PAT_TOKEN }}
