@@ -1,7 +1,7 @@
 name: .NET Core
 
 on:
-  push: 
+  pull_request: 
 jobs:
   build:
 
@@ -15,12 +15,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+        
+    - name: PR ID
+      run: pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+        echo $pull_number
       
     - name: Triggering the Regression Tests
       run: |
-        response = $(curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
+        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
         'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
-        --data '{"event_type": "build_application"}')
-        echo "response from curl= $response"
+        --data '{"event_type": "build_application"}'
+      
