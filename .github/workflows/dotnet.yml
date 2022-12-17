@@ -21,6 +21,7 @@ jobs:
       run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo '${{ steps.pr.outputs.pull_request_number }}'
         
       
     - name: Triggering the Regression Tests
