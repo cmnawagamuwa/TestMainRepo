@@ -16,7 +16,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
-    - name: Get Pull Request Number
+    - name: Get Pull Request Number A
       id: pr
       run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
       env:
