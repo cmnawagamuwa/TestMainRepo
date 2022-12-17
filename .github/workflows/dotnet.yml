@@ -18,8 +18,9 @@ jobs:
       
     - name: Triggering the Regression Tests
       run: |
-        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
+        response = $(curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
         -H "Accept: application/vnd.github.everest-preview+json" \
         -H "Content-Type: application/json" \
         'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
-        --data '{"event_type": "build_application"}'
+        --data '{"event_type": "build_application"}')
+        echo "response from curl= $response"
