@@ -1,6 +1,5 @@
-name: Deploy
-on:
-  push:
+name: pull
+on: pull_request
   
 jobs:
   build:
@@ -15,6 +14,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+        
+    - name: Running test cases
+      uses: cmnawagamuwa/AutomationWithGitHubAction@master
+      with:
+          authToken: ${{secrets.PAT_TOKEN}}
+          context: 'Regression tests'
+          description: 'Tests pending deploy'
+          # success, error, failure, or pending
+          state: 'pending'
+          sha: ${{github.event.pull_request.head.sha}}
 
     #- name: Running test cases
     #  uses: convictional/trigger-workflow-and-wait@v1.3.0
@@ -25,13 +34,13 @@ jobs:
     #    workflow_file_name: main.yml
         
   
-    - name: Test
-      run: |
-        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          -H "Content-Type: application/json" \
-          'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
-          --data '{"event_type": "build_application"}'
+    #- name: Test
+    #  run: |
+    #    curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
+    #      -H "Accept: application/vnd.github.everest-preview+json" \
+    #      -H "Content-Type: application/json" \
+    #      'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
+    #      --data '{"event_type": "build_application"}'
           
     #- name: Test from here
     #  uses: cmnawagamuwa/AutomationWithGitHubAction/dispatches@master
