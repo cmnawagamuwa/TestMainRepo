@@ -18,6 +18,7 @@ jobs:
         
     - name: Run Tests
       uses: cmnawagamuwa/AutomationWithGitHubAction/.github/workflows/main.yml@main
+      
     #- name: Triggering the Regression Tests
      # run: |
      #   curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
