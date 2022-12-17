@@ -35,7 +35,8 @@ jobs:
         owner: cmnawagamuwa
         repo: AutomationWithGitHubAction
         github_token: ${{ secrets.PAT_TOKEN }}
-        comment_downstream_url: ${{ github.event.pull_request.comments_url }}        
+        comment_downstream_url: ${{ github.event.pull_request.comments_url }}
+        workflow_file_name: main.yml        
       
     #- name: Triggering the Regression Tests
      # run: |
