@@ -16,19 +16,19 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Running test cases
-      uses: convictional/trigger-workflow-and-wait@v1.3.0
-      with:
-        owner: cmnawagamuwa
-        repo: AutomationWithGitHubAction
-        github_token: ${{ secrets.PAT_TOKEN }}
-        workflow_file_name: main.yml
+    #- name: Running test cases
+    #  uses: convictional/trigger-workflow-and-wait@v1.3.0
+    #  with:
+    #    owner: cmnawagamuwa
+    #    repo: AutomationWithGitHubAction
+    #    github_token: ${{ secrets.PAT_TOKEN }}
+    #    workflow_file_name: main.yml
         
   
-    #- name: Test
-    #  run: |
-    #    curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
-    #   -H "Accept: application/vnd.github.everest-preview+json" \
-    #    -H "Content-Type: application/json" \
-    #    'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
-    #    --data '{"event_type": "build_application"}'
+    - name: Test
+      run: |
+        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          -H "Content-Type: application/json" \
+          'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
+          --data '{"event_type": "build_application"}'
