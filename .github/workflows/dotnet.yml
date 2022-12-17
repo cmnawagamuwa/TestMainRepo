@@ -39,3 +39,4 @@ jobs:
         owner: cmnawagamuwa
         repo: AutomationWithGitHubAction
         github_token: ${{ secrets.PAT_TOKEN }}
+        workflow_file_name: main.yml
