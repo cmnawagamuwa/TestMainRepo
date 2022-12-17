@@ -1,12 +1,15 @@
 name: .NET Core
 
 on:
-  push: 
+  push:   
+  
 jobs:
-  build:
-
+  checkout: 
+    uses: cmnawagamuwa/AutomationWithGitHubAction/.github/workflows/main.yml@main
+  
+  build: 
+    
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout  
       uses: actions/checkout@v1
@@ -16,8 +19,6 @@ jobs:
       with:
         dotnet-version: 6.0.x   
         
-    - name: Run Tests
-      uses: cmnawagamuwa/AutomationWithGitHubAction/.github/workflows/main.yml@main
       
     #- name: Triggering the Regression Tests
      # run: |
