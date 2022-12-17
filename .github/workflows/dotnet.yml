@@ -1,8 +1,7 @@
 name: .NET Core
 
 on:
-  push:        
-#fg
+  push: 
 jobs:
   build:
 
