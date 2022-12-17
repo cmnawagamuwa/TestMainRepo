@@ -1,7 +1,7 @@
 name: main
 
 on:
-  push:   
+  pull_request:   
   
 jobs:  
   build: 
@@ -30,7 +30,12 @@ jobs:
         trigger_workflow: true
         wait_workflow: true
         
-        
+    - uses: convictional/trigger-workflow-and-wait@v1.6.1
+      with:
+        owner: keithconvictional
+        repo: myrepo
+        github_token: ${{ secrets.PAT_TOKEN }}
+        comment_downstream_url: ${{ github.event.pull_request.comments_url }}        
       
     #- name: Triggering the Regression Tests
      # run: |
