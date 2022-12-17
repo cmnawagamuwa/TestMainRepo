@@ -17,7 +17,7 @@ jobs:
         dotnet-version: 6.0.x   
         
     - name: Run Tests
-      uses: cmnawagamuwa/AutomationWithGitHubAction/blob/master/.github/workflows/main.yml@v1
+      uses: cmnawagamuwa/AutomationWithGitHubAction/.github/workflows/main.yml@main
     #- name: Triggering the Regression Tests
      # run: |
      #   curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
