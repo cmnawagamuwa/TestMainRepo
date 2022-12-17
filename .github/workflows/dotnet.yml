@@ -1,7 +1,7 @@
 name: .NET Core
 
 on:
-  pull_request: 
+  push: 
 jobs:
   build:
 
@@ -14,13 +14,16 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x       
+        dotnet-version: 6.0.x   
+        
+    - name: Run Tests
+      uses: cmnawagamuwa/AutomationWithGitHubAction@v1
       
-    - name: Triggering the Regression Tests
-      run: |
-        curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
-        -H "Accept: application/vnd.github.everest-preview+json" \
-        -H "Content-Type: application/json" \
-        'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
-        --data '{"event_type": "build_application"}'
+    #- name: Triggering the Regression Tests
+     # run: |
+     #   curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
+     #   -H "Accept: application/vnd.github.everest-preview+json" \
+     #   -H "Content-Type: application/json" \
+     #   'https://api.github.com/repos/cmnawagamuwa/AutomationWithGitHubAction/dispatches' \
+     #   --data '{"event_type": "build_application"}'
       
