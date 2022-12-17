@@ -15,8 +15,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x   
-        
-    - uses: convictional/trigger-workflow-and-wait@v1.6.5
+       
+    - name: Executing Regression Tests 
+      uses: convictional/trigger-workflow-and-wait@v1.6.5
       with:
         owner: cmnawagamuwa
         repo: AutomationWithGitHubAction
