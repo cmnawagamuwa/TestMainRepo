@@ -16,7 +16,7 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: Running test cases
-      uses: ./.github/cmnawagamuwa/AutomationWithGitHubAction
+      uses: cmnawagamuwa/AutomationWithGitHubAction@v1
       with:
           authToken: ${{secrets.PAT_TOKEN}}
           context: 'Regression tests'
