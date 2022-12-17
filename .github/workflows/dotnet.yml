@@ -17,8 +17,8 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: PR ID
-      run: pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-        echo $pull_number
+      env:
+        PR_NUMBER: ${{ github.event.number }}
       
     - name: Triggering the Regression Tests
       run: |
