@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Get source branch name
-      env:
-          PR_NUMBER: ${{ github.ref_name }}
-      run: |
-          echo "$PR_NUMBER"
+    - name: Set output
+      id: vars
+      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+    - name: Check output
+      run: echo ${{ steps.vars.outputs.short_ref }}
     
    # - name: Checkout  
    #   uses: actions/checkout@v1
