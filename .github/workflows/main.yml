@@ -12,7 +12,7 @@ jobs:
     
     - name: Get source branch name
       env:
-          PR_NUMBER: ${{ toJson(github.event.number) }}
+          PR_NUMBER: ${{ github.ref_name }}
       run: |
           echo "$PR_NUMBER"
     
