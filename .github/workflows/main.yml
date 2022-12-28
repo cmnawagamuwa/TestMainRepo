@@ -34,7 +34,7 @@ jobs:
         workflow_file_name: main.yml
         ref: master
         wait_interval: 10
-        client_payload: '{"branch_name":"${{ steps.vars.outputs.branch }}"'
+        client_payload: '{"branch_name":"${{ steps.vars.outputs.branch }}"}'
         propagate_failure: true
         trigger_workflow: true
         wait_workflow: true
