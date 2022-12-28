@@ -1,34 +1,40 @@
 name: main
 
 on:
-  pull_request:   
+  #pull_request:
+  push:
   
 jobs:  
   build: 
     
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout  
-      uses: actions/checkout@v1
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x   
-       
-    - name: Executing Regression Tests 
-      uses: convictional/trigger-workflow-and-wait@v1.6.5
-      with:
-        owner: cmnawagamuwa
-        repo: AutomationWithGitHubAction
-        github_token: ${{ secrets.PAT_TOKEN }}
-        github_user: cmnawagamuwa
-        workflow_file_name: main.yml
-        ref: master
-        wait_interval: 10
-        client_payload: '{}'
-        propagate_failure: true
-        trigger_workflow: true
-        wait_workflow: true
-        comment_downstream_url: ${{ github.event.pull_request.comments_url }} 
+    
+    - name: Get source branch name
+      run: export LATESTLOG=$(git log -1 --pretty=%B) |
+        export SOURCEBRANCH=$(echo $LATESTLOG | awk -F '\\\\n' '{print $1}' |  awk -F '/' '{print $2}' | awk '{print $1}') 
+    
+   # - name: Checkout  
+   #   uses: actions/checkout@v1
+#
+   # - name: Setup .NET Core
+   #   uses: actions/setup-dotnet@v1
+   #   with:
+   #     dotnet-version: 6.0.x   
+   #    
+   # - name: Executing Regression Tests 
+   #   uses: convictional/trigger-workflow-and-wait@v1.6.5
+   #   with:
+   #     owner: cmnawagamuwa
+   #     repo: AutomationWithGitHubAction
+   #     github_token: ${{ secrets.PAT_TOKEN }}
+   #     github_user: cmnawagamuwa
+   #     workflow_file_name: main.yml
+   #     ref: master
+   #     wait_interval: 10
+   #     client_payload: '{}'
+   #     propagate_failure: true
+   #     trigger_workflow: true
+   #     wait_workflow: true
+   #     comment_downstream_url: ${{ github.event.pull_request.comments_url }} 
       
