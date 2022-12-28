@@ -10,12 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Set output
-      id: vars
-      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-
-    - name: Check output
-      run: echo ${{ steps.vars.outputs.short_ref }}
+    - name: Running on a pull request branch.
+      if: steps.branch-name.outputs.is_default == 'false'
+      run: |
+          echo "Running on pr: ${{ steps.branch-name.outputs.current_branch }}"
     
    # - name: Checkout  
    #   uses: actions/checkout@v1
